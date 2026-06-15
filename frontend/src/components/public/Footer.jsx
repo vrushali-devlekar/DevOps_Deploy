@@ -44,7 +44,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-[#060606] text-white font-sans border-t border-white/[0.06]">
+    <footer className="w-full bg-[#000000] text-white font-sans border-t border-white/[0.06]">
       <div className="max-w-[1200px] mx-auto px-6 py-12 md:px-12 lg:px-24">
         <div className="flex flex-col lg:flex-row justify-between gap-12">
           
@@ -57,14 +57,14 @@ const Footer = () => {
             </p>
 
             {/* SOCIAL ICONS */}
-            <div className="flex gap-4 text-[#71717a] mt-2">
-              <a href="#" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/[0.04]">
+            <div className="flex gap-6 text-[#71717a] mt-2">
+              <a href="#" className="opacity-50 hover:opacity-100 hover:text-white transition-all duration-200 p-2 rounded-full hover:bg-white/[0.04]">
                 <Github size={18} />
               </a>
-              <a href="#" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/[0.04]">
+              <a href="#" className="opacity-50 hover:opacity-100 hover:text-white transition-all duration-200 p-2 rounded-full hover:bg-white/[0.04]">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="hover:text-white transition-colors p-2 rounded-full hover:bg-white/[0.04]">
+              <a href="#" className="opacity-50 hover:opacity-100 hover:text-white transition-all duration-200 p-2 rounded-full hover:bg-white/[0.04]">
                 <Linkedin size={18} />
               </a>
             </div>
@@ -115,7 +115,7 @@ const Footer = () => {
           
           <div className="flex gap-6 md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-8">
             <span className="flex items-center gap-2 text-[11px] text-[#71717a]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#a3e635]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#a3e635] animate-pulse"></span>
               All systems operational
             </span>
           </div>
