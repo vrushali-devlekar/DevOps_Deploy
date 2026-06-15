@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSidebar } from "../../hooks/useSidebar";
+import { useAuth } from "../../context/AuthContext";
 import Sidebar from "../../components/layout/Sidebar";
 import Dock from "../../components/layout/Dock";
 import PageWrapper from "../../components/layout/PageWrapper";
@@ -115,6 +116,7 @@ const StatCard = ({ label, value, delta, isPositive, Icon, iconColor, sparkData,
    ═══════════════════════════════════════════ */
 export default function Dashboard() {
   const { isCollapsed, toggleSidebar, navMode, toggleNavMode } = useSidebar();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [recentDeploys, setRecentDeploys] = useState([]);
@@ -129,9 +131,20 @@ export default function Dashboard() {
     deltas: {}
   });
 
+  const getGreeting = () => {
+    const hrs = new Date().getHours();
+    if (hrs < 12) return "Good morning";
+    if (hrs < 17) return "Good afternoon";
+    return "Good evening";
+  };
+
   useEffect(() => {
     let dead = false;
-    (async () => {
+
+    const fetchData = async (isFirstLoad = false) => {
+      if (isFirstLoad) {
+        setLoading(true);
+      }
       try {
         const [projRes, overviewRes] = await Promise.all([
           getProjects(),
@@ -157,10 +170,23 @@ export default function Dashboard() {
         });
         setRecentDeploys(overviewRes.data?.data?.recentDeployments || []);
         setEnvironmentPreview(overviewRes.data?.data?.environmentPreview || []);
-      } catch { if (!dead) setProjects([]); }
-      finally { if (!dead) setLoading(false); }
-    })();
-    return () => { dead = true; };
+      } catch {
+        if (!dead && isFirstLoad) setProjects([]);
+      } finally {
+        if (!dead && isFirstLoad) setLoading(false);
+      }
+    };
+
+    fetchData(true);
+
+    const intervalId = setInterval(() => {
+      fetchData(false);
+    }, 3000);
+
+    return () => {
+      dead = true;
+      clearInterval(intervalId);
+    };
   }, []);
 
   const stats = [
@@ -187,7 +213,9 @@ export default function Dashboard() {
             <div className="flex items-start justify-between mb-8 pb-6 border-b border-white/[0.06]">
               <div>
                 <h1 className="text-[22px] font-bold text-white tracking-tight leading-tight">Overview</h1>
-                <p className="text-[13px] text-[#52525b] mt-1.5">Good morning — here's what's happening.</p>
+                <p className="text-[13px] text-[#52525b] mt-1.5">
+                  {getGreeting()}, {user?.name || user?.username || 'developer'} — here's what's happening.
+                </p>
               </div>
               <div className="flex items-center gap-3">
                 <GlassButton variant="secondary" onClick={() => navigate("/projects/new")}>

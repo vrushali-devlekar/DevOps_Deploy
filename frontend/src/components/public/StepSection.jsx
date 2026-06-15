@@ -33,10 +33,10 @@ const StepsSection = () => {
   ];
 
   return (
-    <section className="bg-[#060606] text-white font-sans py-24 px-6 md:px-12 lg:px-24 overflow-hidden select-none">
+    <section className="bg-[#000000] text-white font-sans py-24 px-6 md:px-12 lg:px-24 overflow-hidden select-none">
       <div className="max-w-[1200px] mx-auto">
         {/* SECTION HEADING */}
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center font-sans">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tighter text-white mb-4 font-['Press_Start_2P'] uppercase">
             From Code to <span className="text-[#facc15]">Live</span>
           </h2>
@@ -50,35 +50,31 @@ const StepsSection = () => {
           {stepsData.map((step, index) => (
             <div
               key={step.id}
-              className="relative flex flex-col items-start w-full group"
+              className="relative flex flex-col items-start w-full p-6 bg-white/[0.01] hover:bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl transition-all duration-300 group shadow-[0_4px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
             >
               {/* Card visual */}
-              <div className="relative mb-6 bg-[#111113] border border-white/[0.06] rounded-xl p-6 w-full flex flex-col items-center justify-center transition-all duration-300 hover:border-white/[0.12] hover:bg-[#18181b] shadow-elevation-1">
-
+              <div className="relative mb-6 w-full flex flex-col items-center justify-center">
                 <img
                   src={step.image}
                   alt={`${step.title} visual`}
-                  className="w-48 h-48 md:w-56 md:h-56 object-contain filter drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-2"
+                  className="w-48 h-48 md:w-52 md:h-52 object-contain filter drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-2"
                 />
-
-                {/* Connecting Lines (Desktop Only) */}
-                {index < stepsData.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-white/[0.06] z-0 pointer-events-none"></div>
-                )}
               </div>
 
               {/* STEP TEXT CONTENT */}
-              <div className="flex flex-col items-start w-full px-2">
-                <div className="flex items-center gap-3 mb-3">
+              <div className="flex flex-col items-start w-full mt-auto">
+                <div className="flex items-center gap-3 mb-4 font-sans">
                   <div className={`w-8 h-8 rounded-lg ${step.iconBg} flex items-center justify-center`}>
                     {step.icon}
                   </div>
-                  <span className="text-xs font-semibold text-[#71717a] tracking-widest uppercase">Step {step.id}</span>
+                  <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#a3e635] bg-[#1a1a1c] border border-white/[0.04] rounded-full tracking-wide">
+                    Step {step.id}
+                  </span>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">
+                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight font-sans">
                   {step.title}
                 </h3>
-                <p className="text-[14px] leading-relaxed text-[#a1a1aa]">
+                <p className="text-[14px] leading-relaxed text-[#a1a1aa] font-sans">
                   {step.description}
                 </p>
               </div>

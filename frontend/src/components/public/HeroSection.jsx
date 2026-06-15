@@ -13,19 +13,19 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="hero" className="relative min-h-screen w-full bg-[#060606] font-sans overflow-hidden select-none flex flex-col">
+    <section id="hero" className="relative min-h-screen w-full bg-[#000000] font-sans overflow-hidden select-none flex flex-col">
       {/* Background Image */}
       <div
         className='absolute inset-0 z-0 h-full w-full bg-cover bg-no-repeat'
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundPosition: 'left 20% 85%',
-          filter: 'brightness(0.6) contrast(1.1)'
+          backgroundPosition: 'center 60%',
+          filter: 'brightness(0.35) contrast(1.15)'
         }}
       />
-      {/* Overlays */}
-      <div className='absolute inset-0 z-10 bg-gradient-to-r from-black/50 via-black/10 to-transparent' />
-      <div className='absolute inset-0 z-10 bg-gradient-to-t from-black/20 via-transparent to-transparent' />
+      {/* Overlays: Radial mask + smooth bottom fade to pitch black */}
+      <div className='absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.1)_0%,#000000_90%)]' />
+      <div className='absolute inset-0 z-10 bg-gradient-to-t from-[#000000] via-[#000000]/60 to-transparent' />
 
       <div className="relative z-10 flex flex-col h-full grow">
         {/* Navigation */}
@@ -54,12 +54,12 @@ const HeroSection = () => {
             )}
           </div>
 
-          <div className="flex items-center gap-4">
-            <NavLink to="/login" className="hidden sm:flex items-center justify-center h-8 px-4 text-[12px] font-medium text-white border border-white/20 rounded hover:bg-white/5 transition-colors">
+          <div className="flex items-center gap-4 font-sans">
+            <NavLink to="/login" className="hidden sm:flex items-center justify-center h-8 px-4 text-[12px] font-medium text-white border border-white/20 rounded-md hover:bg-white/5 transition-colors">
               Sign In
             </NavLink>
             <NavLink to="/register">
-              <button className="h-8 px-4 bg-[#a3e635] text-black text-[12px] font-bold rounded hover:bg-[#bef264] transition-colors">
+              <button className="h-8 px-4 bg-[#a3e635] text-black text-[12px] font-bold rounded-md hover:bg-[#bef264] transition-colors cursor-pointer">
                 Get Started
               </button>
             </NavLink>
@@ -70,12 +70,13 @@ const HeroSection = () => {
         <main className="grow flex flex-col items-center justify-center px-4 pt-20 pb-32 text-center">
           <div className="max-w-4xl flex flex-col items-center">
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-[#a3e635]/20 text-[10px] text-[#a3e635] mb-8 font-mono uppercase font-bold tracking-widest">
-              <div className='w-2 h-2 bg-[#a3e635] rounded-sm rotate-45' />
+            {/* Announcement Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111113]/60 backdrop-blur-md border border-[#a3e635]/20 text-xs text-[#a3e635] mb-8 font-sans transition-all duration-300 hover:border-[#a3e635]/40">
+              <div className='w-1.5 h-1.5 bg-[#a3e635] rounded-full animate-pulse' />
               <span>Velora 2.0 is now available</span>
               <div className="w-px h-3 bg-white/[0.1] mx-1"></div>
-              <NavLink to="/documentation" className="flex items-center gap-1 hover:text-white transition-colors">
-                Read the release notes <ChevronRight size={14} />
+              <NavLink to="/documentation" className="flex items-center gap-1 text-white hover:text-[#a3e635] transition-colors font-medium">
+                Read release notes <ChevronRight size={12} />
               </NavLink>
             </div>
 
@@ -89,20 +90,19 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="max-w-2xl text-[#a1a1aa] text-lg md:text-xl font-normal leading-relaxed mb-10">
+            <p className="max-w-2xl text-[#a1a1aa] text-lg md:text-xl font-normal leading-relaxed mb-10 font-sans">
               Velora provides the developer tools and cloud infrastructure to build, scale, and secure a faster, more personalized web.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <NavLink to="/register">
-                <button className="h-12 px-6 text-[13px] font-bold w-full sm:w-auto flex items-center justify-center gap-2 bg-[#a3e635] hover:bg-[#bef264] text-black rounded transition-colors font-mono">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto font-sans">
+              <NavLink to="/register" className="w-full sm:w-auto">
+                <button className="h-12 px-8 text-sm font-semibold w-full sm:w-auto flex items-center justify-center gap-2 bg-[#a3e635] hover:bg-[#bef264] text-black rounded-lg transition-all duration-200 shadow-[0_0_20px_rgba(163,230,53,0.15)] hover:shadow-[0_0_25px_rgba(163,230,53,0.3)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
                   Get Started Free <span>→</span>
                 </button>
               </NavLink>
-              <NavLink to="/documentation">
-                <button className="h-12 px-6 text-[13px] font-bold w-full sm:w-auto flex items-center justify-center gap-2 bg-transparent border border-white/20 hover:bg-white/5 text-white rounded transition-colors font-mono">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                  View Documentation
+              <NavLink to="/documentation" className="w-full sm:w-auto">
+                <button className="h-12 px-8 text-sm font-semibold w-full sm:w-auto flex items-center justify-center gap-2 bg-black/40 backdrop-blur-sm border border-white/10 hover:border-white/30 hover:bg-white/5 text-white rounded-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+                  View Documentation <span>→</span>
                 </button>
               </NavLink>
             </div>
