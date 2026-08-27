@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- Twilight Sky Skybox Gradients -->
+    <linearGradient id="twilightSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c071e"/>
+      <stop offset="25%" stop-color="#1b1035"/>
+      <stop offset="55%" stop-color="#3b154c"/>
+      <stop offset="75%" stop-color="#6b2148"/>
+      <stop offset="90%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <!-- Twilight Sun / Horizon Glow -->
+    <radialGradient id="sunGlow" cx="50%" cy="75%" r="60%">
+      <stop offset="0%" stop-color="rgba(251, 191, 36, 0.6)"/>
+      <stop offset="30%" stop-color="rgba(244, 63, 94, 0.35)"/>
+      <stop offset="70%" stop-color="rgba(147, 51, 234, 0.15)"/>
+      <stop offset="100%" stop-color="rgba(0, 0, 0, 0)"/>
+    </radialGradient>
+
+    <!-- God Rays Volumetric Light Mask -->
+    <linearGradient id="godRayGrad" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="rgba(254, 240, 138, 0.25)"/>
+      <stop offset="50%" stop-color="rgba(251, 146, 60, 0.12)"/>
+      <stop offset="100%" stop-color="rgba(0, 0, 0, 0)"/>
+    </linearGradient>
+
+    <!-- Redstone Amber Glow & Green Neon Glow -->
+    <filter id="amberGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="greenConduitGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="waterGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Voxel Grass Gradients -->
+    <linearGradient id="voxelGrassTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bef264"/>
+      <stop offset="50%" stop-color="#84cc16"/>
+      <stop offset="100%" stop-color="#4d7c0f"/>
+    </linearGradient>
+
+    <linearGradient id="waterfallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(56, 189, 248, 0.9)"/>
+      <stop offset="50%" stop-color="rgba(14, 165, 233, 0.7)"/>
+      <stop offset="100%" stop-color="rgba(224, 242, 254, 0.2)"/>
+    </linearGradient>
+
+    <!-- Pixel Grid Overlay for BSL Shader Texture -->
+    <pattern id="pixelShaderGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="rgba(255,255,255,0.015)"/>
+      <rect x="10" y="10" width="10" height="10" fill="rgba(0,0,0,0.02)"/>
+    </pattern>
+  </defs>
+
+  <!-- Twilight Skybox -->
+  <rect width="1920" height="1080" fill="url(#twilightSky)"/>
+  <rect width="1920" height="1080" fill="url(#sunGlow)"/>
+
+  <!-- VOLUMETRIC GOD RAYS (BSL Shader Raytracing Effect) -->
+  <g opacity="0.85">
+    <polygon points="960,300 -100,1080 300,1080" fill="url(#godRayGrad)"/>
+    <polygon points="960,300 400,1080 750,1080" fill="url(#godRayGrad)"/>
+    <polygon points="960,300 900,1080 1300,1080" fill="url(#godRayGrad)"/>
+    <polygon points="960,300 1450,1080 1900,1080" fill="url(#godRayGrad)"/>
+    <polygon points="960,300 1800,1080 2200,1080" fill="url(#godRayGrad)"/>
+  </g>
+
+  <!-- Distant Stars in Upper Atmosphere -->
+  <g opacity="0.6">
+    <circle cx="150" cy="80" r="1.5" fill="#ffffff"/>
+    <circle cx="320" cy="140" r="2" fill="#fef08a"/>
+    <circle cx="580" cy="90" r="1" fill="#ffffff"/>
+    <circle cx="820" cy="120" r="1.5" fill="#38bdf8"/>
+    <circle cx="1240" cy="70" r="2" fill="#ffffff"/>
+    <circle cx="1560" cy="110" r="1.5" fill="#fef08a"/>
+    <circle cx="1780" cy="60" r="2" fill="#ffffff"/>
+  </g>
+
+  <!-- BACKGROUND FLOATING VOXEL SKY ISLAND (Distant Depth Layer) -->
+  <g transform="translate(900, 260)" opacity="0.75">
+    <!-- Island Dirt & Bedrock Base -->
+    <polygon points="0,0 160,-80 320,0 160,80" fill="#65a30d"/>
+    <polygon points="0,0 160,80 160,180 0,100" fill="#292524"/>
+    <polygon points="160,80 320,0 320,100 160,180" fill="#1c1917"/>
+    <!-- Distant Water Stream -->
+    <polygon points="200,30 220,20 220,160 200,170" fill="#38bdf8" opacity="0.8"/>
+  </g>
+
+  <!-- LEFT MIDGROUND GIANT FLOATING MINECRAFT VOXEL SKY ISLAND -->
+  <g transform="translate(120, 380)">
+    <!-- Base Bedrock Crags & Severed Under-Cliffs -->
+    <polygon points="0,0 280,-140 560,0 280,140" fill="url(#voxelGrassTop)" stroke="#a3e635" stroke-width="2"/>
+    <polygon points="0,0 280,140 280,320 0,180" fill="#292524" stroke="#44403c" stroke-width="2"/>
+    <polygon points="280,140 560,0 560,180 280,320" fill="#1c1917" stroke="#292524" stroke-width="2"/>
+
+    <!-- Stepped Voxel Dirt Layers -->
+    <polygon points="0,0 280,140 280,160 0,20" fill="#4d7c0f"/>
+    <polygon points="280,140 560,0 560,20 280,160" fill="#3f6212"/>
+
+    <!-- BLOCKY PINE TREES ON LEFT ISLAND -->
+    <!-- Tree 1 -->
+    <g transform="translate(180, -120)">
+      <!-- Trunk -->
+      <rect x="25" y="50" width="20" height="40" fill="#451a03"/>
+      <!-- Pine Leaf Voxel Pyramids -->
+      <polygon points="-10,50 35,-10 80,50" fill="#15803d"/>
+      <polygon points="0,20 35,-30 70,20" fill="#166534"/>
+      <polygon points="10,-10 35,-50 60,-10" fill="#14532d"/>
+    </g>
+
+    <!-- Tree 2 (Smaller) -->
+    <g transform="translate(320, -80)">
+      <rect x="20" y="40" width="15" height="30" fill="#451a03"/>
+      <polygon points="-5,40 27,-10 59,40" fill="#16a34a"/>
+      <polygon points="5,15 27,-25 49,15" fill="#15803d"/>
+    </g>
+
+    <!-- CASCADING WATERFALL FALLING OFF FLOATING CLIFFS -->
+    <g filter="url(#waterGlow)">
+      <polygon points="380,40 430,15 430,420 380,440" fill="url(#waterfallGrad)"/>
+      <polygon points="430,15 450,25 450,400 430,420" fill="rgba(186, 230, 253, 0.7)"/>
+      <!-- Splash Mist Cloud at Waterfall Bottom -->
+      <ellipse cx="405" cy="430" rx="60" ry="20" fill="rgba(224, 242, 254, 0.4)" filter="url(#amberGlow)"/>
+    </g>
+
+    <!-- GLOWING NEON GREEN & AMBER REDSTONE CONDUITS ON BEDROCK -->
+    <g filter="url(#amberGlow)">
+      <!-- Amber Redstone Traces -->
+      <path d="M40,120 L180,190 L280,140 L380,190" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="12 6"/>
+      <circle cx="180" cy="190" r="6" fill="#fbbf24"/>
+      <circle cx="280" cy="140" r="7" fill="#f59e0b"/>
+    </g>
+
+    <g filter="url(#greenConduitGlow)">
+      <!-- Neon Green Cyber Conduits -->
+      <path d="M120,60 L280,140 L460,50 L520,80" fill="none" stroke="#a3e635" stroke-width="4"/>
+      <rect x="274" y="134" width="12" height="12" fill="#bef264"/>
+      <rect x="454" y="44" width="12" height="12" fill="#a3e635"/>
+    </g>
+  </g>
+
+  <!-- RIGHT FOREGROUND GIANT FLOATING VOXEL SKY ISLAND -->
+  <g transform="translate(1100, 480)">
+    <!-- Island Deck & Bedrock -->
+    <polygon points="0,0 340,-170 680,0 340,170" fill="url(#voxelGrassTop)" stroke="#a3e635" stroke-width="2"/>
+    <polygon points="0,0 340,170 340,380 0,210" fill="#1c1917" stroke="#292524" stroke-width="2"/>
+    <polygon points="340,170 680,0 680,210 340,380" fill="#09090b" stroke="#1c1917" stroke-width="2"/>
+
+    <!-- Grass Edge Trim -->
+    <polygon points="0,0 340,170 340,195 0,25" fill="#65a30d"/>
+    <polygon points="340,170 680,0 680,25 340,195" fill="#4d7c0f"/>
+
+    <!-- GIANT PINE TREES ON RIGHT ISLAND -->
+    <g transform="translate(220, -180)">
+      <rect x="35" y="70" width="30" height="60" fill="#451a03"/>
+      <polygon points="-20,70 50,-20 120,70" fill="#15803d"/>
+      <polygon points="-5,30 50,-45 105,30" fill="#166534"/>
+      <polygon points="10,-10 50,-75 90,-10" fill="#14532d"/>
+    </g>
+
+    <g transform="translate(420, -120)">
+      <rect x="25" y="50" width="20" height="40" fill="#451a03"/>
+      <polygon points="-10,50 35,-10 80,50" fill="#16a34a"/>
+      <polygon points="0,20 35,-30 70,20" fill="#15803d"/>
+    </g>
+
+    <!-- RIGHT WATERFALL FALLING INTO MIST BELOW -->
+    <g filter="url(#waterGlow)">
+      <polygon points="120,60 180,30 180,480 120,500" fill="url(#waterfallGrad)"/>
+      <polygon points="180,30 200,40 200,460 180,480" fill="rgba(186, 230, 253, 0.8)"/>
+      <!-- Mist at bottom -->
+      <ellipse cx="150" cy="490" rx="90" ry="25" fill="rgba(224, 242, 254, 0.45)" filter="url(#amberGlow)"/>
+    </g>
+
+    <!-- GLOWING NEON GREEN & AMBER REDSTONE CONDUITS -->
+    <g filter="url(#amberGlow)">
+      <path d="M80,200 L220,270 L340,170 L480,240" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="16 8"/>
+      <circle cx="220" cy="270" r="8" fill="#fef08a"/>
+      <circle cx="340" cy="170" r="9" fill="#f59e0b"/>
+    </g>
+
+    <g filter="url(#greenConduitGlow)">
+      <path d="M200,100 L340,170 L540,70 L620,110" fill="none" stroke="#a3e635" stroke-width="5"/>
+      <rect x="332" y="162" width="16" height="16" fill="#bef264"/>
+      <rect x="532" y="62" width="16" height="16" fill="#a3e635"/>
+    </g>
+  </g>
+
+  <!-- BOTTOM MIST & ATMOSPHERIC HAZE LAYER -->
+  <rect x="0" y="850" width="1920" height="230" fill="url(#sunGlow)" opacity="0.6"/>
+  <rect width="1920" height="1080" fill="url(#pixelShaderGrid)"/>
+
+  <!-- FLOATING PIXEL EMBERS & SPARK PARTICLES -->
+  <g filter="url(#amberGlow)">
+    <rect x="220" y="320" width="6" height="6" fill="#fef08a"/>
+    <rect x="480" y="240" width="8" height="8" fill="#f59e0b"/>
+    <rect x="840" y="520" width="7" height="7" fill="#a3e635"/>
+    <rect x="1350" y="340" width="9" height="9" fill="#bef264"/>
+    <rect x="1620" y="620" width="7" height="7" fill="#fbbf24"/>
+    <rect x="1050" y="780" width="8" height="8" fill="#38bdf8"/>
+    <rect x="350" y="720" width="6" height="6" fill="#f59e0b"/>
+  </g>
+</svg>

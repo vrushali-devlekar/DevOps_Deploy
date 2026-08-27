@@ -42,7 +42,7 @@ const TopNav = () => {
   }, []);
 
   return (
-    <header className="h-16 flex items-center justify-between px-3 sm:px-4 md:px-6 lg:px-8 shrink-0 relative z-50 w-full border-b border-white/[0.05] bg-[#050505]/40 backdrop-blur-2xl gap-2">
+    <header className="h-16 flex items-center justify-between px-3 sm:px-4 md:px-6 lg:px-8 shrink-0 relative z-50 w-full border-b border-[#10b981]/15 bg-[#030705]/80 backdrop-blur-2xl gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
 
       {/* Left — breadcrumb */}
       <div className="flex items-center gap-2 min-w-0">

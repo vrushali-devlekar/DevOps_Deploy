@@ -80,7 +80,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar, navMode, toggleNavMode }) => {
       initial={false}
       animate={{ width: isCollapsed ? 92 : 260 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="fixed left-0 top-0 h-screen z-50 bg-[#161618] border-r border-white/[0.04] hidden md:flex flex-col"
+      className="fixed left-0 top-0 h-screen z-50 bg-[#060c09]/95 backdrop-blur-2xl border-r border-[#10b981]/15 hidden md:flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.6)]"
     >
       {/* Brand */}
       <div className={`h-20 flex items-center px-6 ${isCollapsed ? "justify-center" : ""}`}>
