@@ -12,8 +12,9 @@ import {
   Rocket, Folder, Terminal, BrainCircuit, History,
   Settings, ArrowUpRight, ArrowDownRight,
   Clock, Plus, GitBranch, Globe, Activity, TrendingUp,
-  Shield
+  Shield, Cpu, Sparkles
 } from "lucide-react";
+import quantumCoreImg from "../../assets/quantum_server_core.svg";
 import {
   getProjects,
   getWorkspaceOverview
@@ -67,7 +68,7 @@ const UptimeBar = ({ data = [] }) => {
         <div
           key={i}
           style={{ height: `${Math.max(8, h)}%` }}
-          className={`flex-1 rounded-[2px] transition-colors ${h <= 0 ? "bg-white/[0.05]" : "bg-[#22c55e]/40 hover:bg-[#22c55e]/70"}`}
+          className={`flex-1 rounded-[2px] transition-colors ${h <= 0 ? "bg-white/[0.04]" : "bg-[#10b981]/50 hover:bg-[#10b981] shadow-[0_0_6px_rgba(16,185,129,0.3)]"}`}
         />
       ))}
     </div>
@@ -79,9 +80,9 @@ const BentoCard = ({ children, className = "", onClick, hover = true }) => (
   <div
     onClick={onClick}
     className={`
-      bg-[#111113] border border-white/[0.07] rounded-2xl overflow-hidden
-      ${hover ? "hover:border-white/[0.13] hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] cursor-pointer" : ""}
-      transition-all duration-200
+      bg-[#0a0a0d]/90 backdrop-blur-xl border border-[#f59e0b]/20 rounded-2xl overflow-hidden
+      ${hover ? "hover:border-[#f59e0b]/50 hover:shadow-[0_8px_32px_rgba(245,158,11,0.2)] cursor-pointer" : ""}
+      transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.5)]
       ${className}
     `}
   >
@@ -190,16 +191,16 @@ export default function Dashboard() {
   }, []);
 
   const stats = [
-    { label: "Total Projects", value: dbStats.totalProjects, delta: dbStats.deltas?.totalProjects || "0", isPositive: !String(dbStats.deltas?.totalProjects || "").startsWith("-"), Icon: Folder, iconColor: "bg-[#22c55e]/10 text-[#22c55e]", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#22c55e" },
-    { label: "Deployments", value: dbStats.totalDeployments, delta: dbStats.deltas?.totalDeployments || "0", isPositive: !String(dbStats.deltas?.totalDeployments || "").startsWith("-"), Icon: Rocket, iconColor: "bg-[#3b82f6]/10 text-[#3b82f6]", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#3b82f6" },
-    { label: "Success Rate", value: dbStats.successRate, delta: dbStats.deltas?.successRate || "0/0", isPositive: true, Icon: Shield, iconColor: "bg-[#a855f7]/10 text-[#a855f7]", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#a855f7" },
-    { label: "Avg Build", value: dbStats.avgBuildTime, delta: dbStats.deltas?.avgBuildTime || "0 samples", isPositive: true, Icon: Clock, iconColor: "bg-[#eab308]/10 text-[#eab308]", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#eab308" },
+    { label: "Total Projects", value: dbStats.totalProjects, delta: dbStats.deltas?.totalProjects || "0", isPositive: !String(dbStats.deltas?.totalProjects || "").startsWith("-"), Icon: Folder, iconColor: "bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/30", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#f59e0b" },
+    { label: "Deployments", value: dbStats.totalDeployments, delta: dbStats.deltas?.totalDeployments || "0", isPositive: !String(dbStats.deltas?.totalDeployments || "").startsWith("-"), Icon: Rocket, iconColor: "bg-[#fbbf24]/15 text-[#fbbf24] border border-[#fbbf24]/30", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#fbbf24" },
+    { label: "Success Rate", value: dbStats.successRate, delta: dbStats.deltas?.successRate || "0/0", isPositive: true, Icon: Shield, iconColor: "bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#10b981" },
+    { label: "Avg Build", value: dbStats.avgBuildTime, delta: dbStats.deltas?.avgBuildTime || "0 samples", isPositive: true, Icon: Clock, iconColor: "bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/30", sparkData: (dbStats.activityBars || []).slice(-8), sparkColor: "#38bdf8" },
   ];
 
   const activityBars = dbStats.activityBars || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#050505] text-white font-sans">
+    <div className="flex h-screen overflow-hidden bg-[#040406] text-white font-sans">
       <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} navMode={navMode} toggleNavMode={toggleNavMode} />
       <Dock navMode={navMode} toggleNavMode={toggleNavMode} />
 
@@ -209,21 +210,45 @@ export default function Dashboard() {
         <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: "none" }}>
           <div className="p-8 max-w-[1400px] mx-auto">
 
-            {/* ══ PAGE HEADER ══ */}
-            <div className="flex items-start justify-between mb-8 pb-6 border-b border-white/[0.06]">
-              <div>
-                <h1 className="text-[22px] font-bold text-white tracking-tight leading-tight">Overview</h1>
-                <p className="text-[13px] text-[#52525b] mt-1.5">
-                  {getGreeting()}, {user?.name || user?.username || 'developer'} — here's what's happening.
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <GlassButton variant="secondary" onClick={() => navigate("/projects/new")}>
-                  <Plus size={14} /> New Project
-                </GlassButton>
-                <GlassButton variant="primary" onClick={() => navigate("/deploy")}>
-                  <Rocket size={14} /> Deploy
-                </GlassButton>
+            {/* ══ ANTIGRAVITY QUANTUM SERVER CORE BANNER ══ */}
+            <div className="relative mb-8 rounded-2xl bg-gradient-to-r from-[#140b04] via-[#1f1005] to-[#080402] border border-[#f59e0b]/30 p-6 sm:p-8 overflow-hidden shadow-[0_10px_40px_rgba(245,158,11,0.15)]">
+              {/* Background Volumetric Glow Overlay */}
+              <div className="absolute -right-20 -top-20 w-80 h-80 bg-[#f59e0b]/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-[#fbbf24]/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="max-w-2xl">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f59e0b]/15 border border-[#f59e0b]/30 text-[11px] font-bold text-[#fef08a] mb-4 tracking-wider uppercase">
+                    <Sparkles size={12} className="text-[#fbbf24]" />
+                    <span>Antigravity Quantum Core Active</span>
+                  </div>
+
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight mb-2">
+                    {getGreeting()}, <span className="text-[#fef08a]">{user?.name || user?.username || 'Operator'}</span>
+                  </h1>
+
+                  <p className="text-xs sm:text-sm text-[#d4d4d8] leading-relaxed mb-6 font-sans">
+                    Dark vacuum chamber matrix operational. Shattered matte-black geometric blocks floating symmetrically around vertical laser light pillars.
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    <GlassButton variant="primary" onClick={() => navigate("/deploy")}>
+                      <Rocket size={14} /> Deploy Application
+                    </GlassButton>
+                    <GlassButton variant="secondary" onClick={() => navigate("/projects/new")}>
+                      <Plus size={14} /> New Project
+                    </GlassButton>
+                  </div>
+                </div>
+
+                {/* Isometric 3D Quantum Server Core Visual */}
+                <div className="relative shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-xl overflow-hidden bg-black/50 border border-[#f59e0b]/25 p-2 flex items-center justify-center shadow-2xl">
+                  <img
+                    src={quantumCoreImg}
+                    alt="Antigravity Quantum Server Core"
+                    className="w-full h-full object-contain filter drop-shadow-[0_10px_25px_rgba(245,158,11,0.35)] animate-pulse duration-1000"
+                  />
+                </div>
               </div>
             </div>
 

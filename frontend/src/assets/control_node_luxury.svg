@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <!-- Deep Obsidian Void Background -->
+    <radialGradient id="obsidianVoid" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#051710"/>
+      <stop offset="40%" stop-color="#020a06"/>
+      <stop offset="100%" stop-color="#000302"/>
+    </radialGradient>
+
+    <!-- Translucent Emerald Glass Monolith Gradients -->
+    <linearGradient id="emeraldGlassTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="emeraldGlassLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#064e3b" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="emeraldGlassRight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#047857" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#022c22" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Gold Levitating Cubes & Accents -->
+    <linearGradient id="goldTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+
+    <linearGradient id="goldSide" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#854d0e"/>
+    </linearGradient>
+
+    <!-- Soft Studio Volumetric Light Glow Filters -->
+    <filter id="emeraldVolumetric" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16" result="blur1"/>
+      <feGaussianBlur stdDeviation="35" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="amberSoftGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Laser Coordinate Grid Pattern -->
+    <pattern id="laserGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(16, 185, 129, 0.08)" stroke-width="1"/>
+      <circle cx="40" cy="0" r="1.5" fill="rgba(250, 204, 21, 0.2)"/>
+    </pattern>
+  </defs>
+
+  <!-- Dark Obsidian Studio Background -->
+  <rect width="800" height="800" rx="32" fill="url(#obsidianVoid)"/>
+  <rect width="800" height="800" rx="32" fill="url(#laserGrid)"/>
+
+  <!-- Outer Minimalist Luxury Tech Frame -->
+  <rect x="24" y="24" width="752" height="752" rx="24" fill="none" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5"/>
+  <rect x="40" y="40" width="720" height="720" rx="16" fill="none" stroke="rgba(250, 204, 21, 0.15)" stroke-width="1" stroke-dasharray="16 8"/>
+
+  <!-- FLOATING ZERO-GRAVITY DATA SPHERES & AMBER REFLECTIONS -->
+  <g filter="url(#amberSoftGlow)">
+    <circle cx="180" cy="220" r="16" fill="none" stroke="#facc15" stroke-width="2"/>
+    <circle cx="180" cy="220" r="8" fill="#fef08a"/>
+    
+    <circle cx="640" cy="260" r="22" fill="none" stroke="#10b981" stroke-width="2"/>
+    <circle cx="640" cy="260" r="10" fill="#6ee7b7"/>
+
+    <circle cx="680" cy="560" r="14" fill="none" stroke="#facc15" stroke-width="2"/>
+    <circle cx="680" cy="560" r="6" fill="#facc15"/>
+
+    <circle cx="140" cy="600" r="18" fill="none" stroke="#10b981" stroke-width="2"/>
+    <circle cx="140" cy="600" r="8" fill="#a7f3d0"/>
+  </g>
+
+  <!-- ISOMETRIC LUXURY CONTROL NODE STRUCTURE -->
+  <g transform="translate(400, 480)">
+
+    <!-- Under-Node Volumetric Emerald Studio Glow -->
+    <ellipse cx="0" cy="130" rx="280" ry="90" fill="rgba(16, 185, 129, 0.3)" filter="url(#emeraldVolumetric)"/>
+    <ellipse cx="0" cy="130" rx="180" ry="55" fill="rgba(250, 204, 21, 0.2)" filter="url(#amberSoftGlow)"/>
+
+    <!-- Dark Titanium Base (Isometric Bedrock Platform) -->
+    <polygon points="-260,0 0,-110 260,0 0,110" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <polygon points="-260,0 0,110 0,170 -260,60" fill="#020617" stroke="#0f172a" stroke-width="2"/>
+    <polygon points="0,110 260,0 260,60 0,170" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Thin Laser Coordinate Grids Running Across Base -->
+    <path d="M-180,-30 L-60,20 L0,0 L120,50 L200,15" fill="none" stroke="#10b981" stroke-width="2" filter="url(#emeraldVolumetric)"/>
+    <path d="M-100,-70 L0,-20 L80,-60" fill="none" stroke="#facc15" stroke-width="2" filter="url(#amberSoftGlow)"/>
+
+    <!-- TRANSLUCENT EMERALD GLASS MONOLITH (HOVERING WEIGHTLESSLY) -->
+    <g transform="translate(0, -140)" filter="url(#emeraldVolumetric)">
+      <!-- Monolith Top Face -->
+      <polygon points="0,-120 100,-170 200,-120 100,-70" fill="url(#emeraldGlassTop)" stroke="#a7f3d0" stroke-width="2"/>
+      <!-- Monolith Left Face -->
+      <polygon points="0,-120 100,-70 100,50 0,0" fill="url(#emeraldGlassLeft)" stroke="#34d399" stroke-width="2"/>
+      <!-- Monolith Right Face -->
+      <polygon points="100,-70 200,-120 200,0 100,50" fill="url(#emeraldGlassRight)" stroke="#10b981" stroke-width="2"/>
+
+      <!-- Inner Luminous Octane Core -->
+      <polygon points="50,-80 100,-105 150,-80 100,-55" fill="#ffffff" opacity="0.95"/>
+      <line x1="100" y1="-55" x2="100" y2="15" stroke="#ffffff" stroke-width="4"/>
+    </g>
+
+    <!-- LEVITATING GOLD CUBE FRAGMENTS -->
+    <!-- Gold Cube 1 Left -->
+    <g transform="translate(-160, -220)" filter="url(#amberSoftGlow)">
+      <polygon points="0,-40 45,-60 90,-40 45,-20" fill="url(#goldTop)"/>
+      <polygon points="0,-40 45,-20 45,20 0,0" fill="url(#goldSide)"/>
+      <polygon points="45,-20 90,-40 90,0 45,20" fill="url(#goldSide)"/>
+    </g>
+
+    <!-- Gold Cube 2 Right -->
+    <g transform="translate(110, -250)" filter="url(#amberSoftGlow)">
+      <polygon points="0,-35 40,-53 80,-35 40,-17" fill="url(#goldTop)"/>
+      <polygon points="0,-35 40,-17 40,18 0,0" fill="url(#goldSide)"/>
+      <polygon points="40,-17 80,-35 80,0 40,18" fill="url(#goldSide)"/>
+    </g>
+
+    <!-- Small Levitating Gold Satellites -->
+    <g transform="translate(-70, -320)" filter="url(#amberSoftGlow)">
+      <polygon points="0,-20 25,-32 50,-20 25,-08" fill="#fef08a"/>
+      <polygon points="0,-20 25,-08 25,12 0,0" fill="#facc15"/>
+      <polygon points="25,-08 50,-20 50,0 25,12" fill="#ca8a04"/>
+    </g>
+
+    <g transform="translate(150, -100)" filter="url(#emeraldVolumetric)">
+      <polygon points="0,-18 20,-28 40,-18 20,-08" fill="#6ee7b7"/>
+      <polygon points="0,-18 20,-08 20,10 0,0" fill="#10b981"/>
+      <polygon points="20,-08 40,-18 40,0 20,10" fill="#047857"/>
+    </g>
+
+    <!-- Volumetric Light Dust Particles -->
+    <rect x="-200" y="-120" width="6" height="6" fill="#6ee7b7" filter="url(#emeraldVolumetric)"/>
+    <rect x="220" y="-180" width="8" height="8" fill="#fef08a" filter="url(#amberSoftGlow)"/>
+    <rect x="-30" y="-280" width="6" height="6" fill="#ffffff" filter="url(#emeraldVolumetric)"/>
+  </g>
+</svg>
